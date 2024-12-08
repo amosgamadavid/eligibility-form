@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add your preferences to check your eligibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+        }
+        select, input[type="text"], button {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add your preferences to check your eligibility</h2>
+    
+    <!-- First Page: Preferences -->
+    <form id="multiStepForm">
+        <div class="form-section active" id="section-1">
+            <label for="study-time">When do you want to study abroad?</label>
+            <select id="study-time" name="study-time">
+                <option>Jan 2025</option>
+                <option>May/Sep 2025</option>
+                <option>Year 2026</option>
+            </select>
+
+            <label for="exam-status">What is your IELTS/PTE/Duolingo Status?</label>
+            <select id="exam-status" name="exam-status">
+                <option>Not Decided</option>
+                <option>Planning to Book</option>
+                <option>Booked my Exam</option>
+                <option>Already Given</option>
+            </select>
+
+            <label for="program">What's your preferred program?</label>
+            <select id="program" name="program">
+                <option>Master's</option>
+                <option>PG Diploma</option>
+                <option>MBA</option>
+                <option>Bachelor's</option>
+                <option>PhD</option>
+                <option>Not Decided</option>
+            </select>
+
+            <button type="button" onclick="nextSection(2)">Next</button>
+        </div>
+
+        <!-- Second Page: Education Details -->
+        <div class="form-section" id="section-2">
+            <label for="highest-education">Highest Level of Education</label>
+            <input type="text" id="highest-education" name="highest-education" placeholder="E.g., Bachelor's Degree">
+
+            <label for="field-of-study">Field of Study</label>
+            <input type="text" id="field-of-study" name="field-of-study" placeholder="E.g., Computer Science">
+
+            <button type="button" onclick="prevSection(1)">Back</button>
+            <button type="button" onclick="nextSection(3)">Next</button>
+        </div>
+
+        <!-- Third Page: Contact Information -->
+        <div class="form-section" id="section-3">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Your Name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email">
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" placeholder="Your Phone Number">
+
+            <button type="button" onclick="prevSection(2)">Back</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function nextSection(sectionNumber) {
+        document.querySelectorAll('.form-section').forEach(section => section.classList.remove('active'));
+        document.getElementById(`section-${sectionNumber}`).classList.add('active');
+    }
+
+    function prevSection(sectionNumber) {
+        document.querySelectorAll('.form-section').forEach(section => section.classList.remove('active'));
+        document.getElementById(`section-${sectionNumber}`).classList.add('active');
+    }
+
+    document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Form submitted successfully!');
+    });
+</script>
+
+</body>
+</html>
